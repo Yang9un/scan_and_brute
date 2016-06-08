@@ -26,14 +26,15 @@ def check(ip,user,password):
         req = urllib2.Request(url, data)
         response = urllib2.urlopen(req)
         result = response.read()
+
     except urllib2.HTTPError, e:
-        error =  'We failed whit error code - %s.' % e.code
+        error =  ip + ' - We failed whit error code - %s.' % e.code
         return error
 
 #dicision
     if "<title>Please Input name" in result:
-        returnmsg =  ip + " - Login fail : ID/PW is <" + user + " / " + password + ">"
+        returnmsg =  ip + " - Login OK <" + user + " / " + password + ">"
     else:
-        returnmsg =  ip + " - Login OK : ID/PW is <" + user + " / " + password + ">"
+        returnmsg =  ip + " - Login Fail <" + user + " / " + password + ">"
 
     return returnmsg

@@ -65,7 +65,7 @@ def main():
 
     print "Login 'Fail' list \n ------------------------------------------"
     for text in list_brute:
-        if "fail" in text:
+        if "Fail" in text:
             print text
 
 if __name__ == '__main__':

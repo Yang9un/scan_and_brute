@@ -18,13 +18,13 @@ def check(ip,user,password):
         response = urllib2.urlopen(req)
         result = response.read()
     except urllib2.HTTPError, e:
-        error =  'We failed whit error code - %s.' % e.code
+        error =  ip + ' - We failed whit error code - %s.' % e.code
         return error
 
 #dicision
     if "begin hiding" in result:
-        returnmsg =  ip + " - Login OK : ID/PW is <" + "NONE" + " / " + password + ">"
+        returnmsg =  ip + " - Login OK <" + "NONE" + " / " + password + ">"
     else:
-        returnmsg =  ip + " - Login fail : ID/PW is <" + "NONE" + " / " + password + ">"
+        returnmsg =  ip + " - Login Fail <" + "NONE" + " / " + password + ">"
 
     return returnmsg

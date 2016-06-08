@@ -4,8 +4,8 @@ import base64
 
 def check(ip,user,password):
 
-    url = str("http://" + ip + "/base/web_main.html")
-    password = " ".join(password)
+    url = str("http://" + ip + "/")
+    password = "".join(password)
 #    values = {}
 #    data = urllib.urlencode(values)
     base64string = base64.encodestring('%s:%s' % (user, password)).replace('\n', '')
@@ -17,14 +17,15 @@ def check(ip,user,password):
         response = urllib2.urlopen(req)
         result = response.read()
     except urllib2.HTTPError, e:
-        error =  ip + " - Login fail : ID/PW is <" + user + " / " + password + ">"
+        error =  ip + " - Login Fail : ID/PW is <" + user + " / " + password + ">"
         return error
 
 
 #dicision
-    if "401 Unauthorized" in result:
+    if "Commander" in result:
         returnmsg =  ip + " - Login OK <" + user + " / " + password + ">"
     else:
         returnmsg =  ip + " - Login Fail <" + user + " / " + password + ">"
 
     return returnmsg
+

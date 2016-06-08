@@ -1,9 +1,11 @@
 import module__ruby_l2
 import module__netgear_l2
 import module__netgear_gs110tp
+import module__basic
 import urllib
 import urllib2
 import random
+import httplib
 
 def bander_check(ip, user, password):
     url = str("http://" + ip)
@@ -12,9 +14,13 @@ def bander_check(ip, user, password):
         req = urllib2.Request(url)
         response = urllib2.urlopen(req)
         result = response.read()
+
     except urllib2.HTTPError, e:
-        error =  'We failed whit error code - %s.' % e.code
-        result = "other" + error
+        error =  ip + ' - We failed whit error code - %s.' % e.code
+        result = ip + "other" + error
+    except (IOError, httplib.HTTPException, urllib2.HTTPError ):
+        result = ip + " - connection fail"
+#    print result
 
 
 #bander check
@@ -30,9 +36,14 @@ def bander_check(ip, user, password):
         bander = "PSGS"
         brute_result =  module__ruby_l2.check(ip,user,password) + " - " + bander
 
+    elif "401" in result:
+        bander = "Login to Basic Authorization"
+        brute_result =  module__basic.check(ip,user,password) + " - " + bander
+
     else:
-        bander = "other"
-        brute_result = "No Match Banders" + " - " + bander
+        bander = "Other"
+        brute_result = ip + " - No Match Banders & Check to basic Auth" + " - " + bander
+
     print brute_result
 
     return brute_result
