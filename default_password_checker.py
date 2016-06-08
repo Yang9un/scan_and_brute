@@ -58,14 +58,14 @@ def main():
     print "Scanning...\n"
     list_brute = brute(pre)
 
-    print "\n Login 'OK' list \n ------------------------------------------"
-    for text in list_brute:
-        if "OK" in text:
-            print text
-
-    print "Login 'Fail' list \n ------------------------------------------"
+    print "\nLogin 'Fail' list \n ------------------------------------------"
     for text in list_brute:
         if "Fail" in text:
+            print text
+
+    print "\nLogin 'OK' list \n ------------------------------------------"
+    for text in list_brute:
+        if "OK" in text:
             print text
 
 if __name__ == '__main__':
