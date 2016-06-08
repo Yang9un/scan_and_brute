@@ -1,5 +1,6 @@
 import module__ruby_l2
 import module__netgear_l2
+import module__netgear_gs110tp
 import urllib
 import urllib2
 import random
@@ -17,9 +18,12 @@ def bander_check(ip, user, password):
 
 
 #bander check
-    if "Netgear" in result:
-        bander = "Netgear"
-#        brute_result = "'Netgear' isn't support" + " - " + bander
+    if "GS110TP" in result:
+        bander = "Netgear GS110TP"
+        brute_result = module__netgear_gs110tp.check(ip,user,password) + " - " + bander
+
+    elif "Netgear" in result:
+        bander = "Netgear L2"
         brute_result = module__netgear_l2.check(ip,user,password) + " - " + bander
 
     elif "bgindex.jpg" in result:
