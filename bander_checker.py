@@ -1,6 +1,7 @@
 import module__ruby_l2
 import module__netgear_l2
 import module__netgear_gs110tp
+import module__belair_wifi
 import module__basic
 import urllib
 import urllib2
@@ -35,6 +36,10 @@ def bander_check(ip, user, password):
     elif "bgindex.jpg" in result:
         bander = "PSGS"
         brute_result =  module__ruby_l2.check(ip,user,password) + " - " + bander
+
+    elif "BelAirLogo.jpg" in result:
+        bander = "BelAir"
+        brute_result =  module__belair_wifi.check(ip,user,password) + " - " + bander
 
     elif "401" in result:
         bander = "Login to Basic Authorization"

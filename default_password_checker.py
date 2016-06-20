@@ -1,10 +1,11 @@
 import module__ruby_l2
 import module__netgear_l2
+import module__belair_wifi
 import bander_checker
 import urllib
 import urllib2
 import random
-
+from multiprocessing import Process, Manager
 
 def rotate_ip():
     return ip
@@ -36,6 +37,34 @@ def file_open():
         for j in u:
             for k in p:
                 pre.append(i +";"+ j+";" +k)
+#    print len(pre)
+# divide attack list
+#    pre_1 = Manager.list()
+    pre_1 = pre[:len(pre)/2]
+    pre_11 = pre_1[:len(pre_1)/2]
+    pre_12 = pre_1[len(pre_1)/2:]
+
+    pre_2 = pre[len(pre)/2:]
+    pre_21 = pre_2[:len(pre_2)/2]
+    pre_22 = pre_2[len(pre_2)/2:]
+
+
+#    print len(pre_1)
+#    print pre_1
+#
+#    print len(pre_11)
+#    print pre_11
+#    print len(pre_12)
+#    print pre_12
+#
+#    print '\n'
+#    print len(pre_2)
+#    print pre_2
+#    print len(pre_22)
+#    print pre_21
+#    print len(pre_22)
+#    print pre_22
+
 
 def brute(attack_list):
     count=0
@@ -57,6 +86,8 @@ def main():
     file_open()
     print "Scanning...\n"
     list_brute = brute(pre)
+#    pre_1 = pre
+#    list_brute1= Process(target= brute, args = (pre_1))
 
     print "\nLogin 'Fail' list \n ------------------------------------------"
     for text in list_brute:
