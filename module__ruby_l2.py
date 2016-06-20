@@ -33,8 +33,8 @@ def check(ip,user,password):
 
 #dicision
     if "<title>Please Input name" in result:
-        returnmsg =  ip + " - Login OK <" + user + " / " + password + ">"
-    else:
         returnmsg =  ip + " - Login Fail <" + user + " / " + password + ">"
+    else:
+        returnmsg =  ip + " - Login OK <" + user + " / " + password + ">"
 
     return returnmsg
