@@ -24,9 +24,9 @@ def file_open():
     ip = [ips.replace("\n","") for ips in ip]
     u = [user.replace("\n","") for user in u]
     p = [password.replace("\n","") for password in p]
-    len_ip = len(ip)
-    len_u = len(u)
-    len_p = len(p)
+#    len_ip = len(ip)
+#    len_u = len(u)
+#    len_p = len(p)
 
 #    global pre
     global pre,pre_1,pre_2,pre_11,pre_12,pre_21,pre_22
@@ -48,16 +48,16 @@ def file_open():
     pre_21 = pre_2[:len(pre_2)/2]
     pre_22 = pre_2[len(pre_2)/2:]
 
-    with open ("./tmp\pre_11","w") as fp:
+    with open ("./tmp/pre_11","w") as fp:
         for line in pre_11:
             fp.write(line+"\n")
-    with open ("./tmp\pre_12","w") as fp:
+    with open ("./tmp/pre_12","w") as fp:
         for line in pre_12:
             fp.write(line+"\n")
-    with open ("./tmp\pre_21","w") as fp:
+    with open ("./tmp/pre_21","w") as fp:
         for line in pre_21:
             fp.write(line+"\n")
-    with open ("./tmp\pre_22","w") as fp:
+    with open ("./tmp/pre_22","w") as fp:
         for line in pre_22:
             fp.write(line+"\n")
 
