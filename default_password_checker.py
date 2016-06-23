@@ -48,16 +48,16 @@ def file_open():
     pre_21 = pre_2[:len(pre_2)/2]
     pre_22 = pre_2[len(pre_2)/2:]
 
-    with open ("tmp\pre_11","w") as fp:
+    with open ("./tmp\pre_11","w") as fp:
         for line in pre_11:
             fp.write(line+"\n")
-    with open ("tmp\pre_12","w") as fp:
+    with open ("./tmp\pre_12","w") as fp:
         for line in pre_12:
             fp.write(line+"\n")
-    with open ("tmp\pre_21","w") as fp:
+    with open ("./tmp\pre_21","w") as fp:
         for line in pre_21:
             fp.write(line+"\n")
-    with open ("tmp\pre_22","w") as fp:
+    with open ("./tmp\pre_22","w") as fp:
         for line in pre_22:
             fp.write(line+"\n")
 
@@ -82,10 +82,10 @@ def main():
     file_open()
 #    print pre_1
     print "Scanning...\n"
-    os.system("python multiple_checker.py tmp/pre_11 >> tmp/pre&")
-    os.system("python multiple_checker.py tmp/pre_12 >> tmp/pre&")
-    os.system("python multiple_checker.py tmp/pre_21 >> tmp/pre&")
-    os.system("python multiple_checker.py tmp/pre_22 >> tmp/pre&")
+    os.system("./python multiple_checker.py tmp/pre_11 >> ./tmp/pre&")
+    os.system("./python multiple_checker.py tmp/pre_12 >> ./tmp/pre&")
+    os.system("./python multiple_checker.py tmp/pre_21 >> ./tmp/pre&")
+    os.system("./python multiple_checker.py tmp/pre_22 >> ./tmp/pre&")
 
 
 #    list_brute = r1
