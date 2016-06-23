@@ -21,7 +21,6 @@ def file_open():
     f = open("result.txt", 'r')
     ip = f.readlines()
     f.close()
-
     ip = [ips.replace("\n","") for ips in ip]
     u = [user.replace("\n","") for user in u]
     p = [password.replace("\n","") for password in p]
@@ -76,6 +75,18 @@ def file_open():
 #            print check_result
 #    return check_result
 
+#countdown
+def countdown(t):
+#    print('This window will remain open for 3 more seconds...')
+    while t >= 0:
+        print "Scanning.....Please Wait "+ str(t) + " Sec"
+        time.sleep(1)
+        print "\n"
+        print "Check List : "
+        os.system("cat result.txt")
+        os.system("clear")
+        t -= 1
+
 
 
 def main():
@@ -89,9 +100,12 @@ def main():
     os.system("python multiple_checker.py tmp/pre_21 >> ./tmp/pre&")
     os.system("python multiple_checker.py tmp/pre_22 >> ./tmp/pre&")
     os.system("clear")
-    time.sleep(10)
-    os.system("cat ./tmp/pre | grep OK")
     print "Scanning...\n"
+#    print "Please Wait 30 sec"
+    countdown(30)
+    print "---------------------------------------------"
+    os.system("cat ./tmp/pre | grep OK")
+
 
 
 
