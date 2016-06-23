@@ -6,6 +6,7 @@ import urllib
 import urllib2
 import random
 import os
+import time
 
 
 
@@ -81,11 +82,17 @@ def main():
 
     file_open()
 #    print pre_1
+#    print "Scanning...\n"
+    os.system("cat /dev/null > ./tmp/pre")
+    os.system("python multiple_checker.py tmp/pre_11 >> ./tmp/pre&")
+    os.system("python multiple_checker.py tmp/pre_12 >> ./tmp/pre&")
+    os.system("python multiple_checker.py tmp/pre_21 >> ./tmp/pre&")
+    os.system("python multiple_checker.py tmp/pre_22 >> ./tmp/pre&")
+    os.system("clear")
+    time.sleep(10)
+    os.system("cat ./tmp/pre | grep OK")
     print "Scanning...\n"
-    os.system("./python multiple_checker.py tmp/pre_11 >> ./tmp/pre&")
-    os.system("./python multiple_checker.py tmp/pre_12 >> ./tmp/pre&")
-    os.system("./python multiple_checker.py tmp/pre_21 >> ./tmp/pre&")
-    os.system("./python multiple_checker.py tmp/pre_22 >> ./tmp/pre&")
+
 
 
 #    list_brute = r1
