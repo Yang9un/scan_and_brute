@@ -77,7 +77,7 @@ def countdown(t):
         print "Scanning.....Please Wait "+ str(t) + " Sec"
         print "\n"
         print "Check List : "
-        os.system("cat result.txt")
+        os.system("cat ./tmp/result.txt")
         os.system("clear")
         time.sleep(1)
 
