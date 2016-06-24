@@ -1,4 +1,4 @@
-from Default_password_check.modules import *
+from modules import *
 import bander_checker
 import os
 import sys

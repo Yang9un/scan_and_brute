@@ -1,4 +1,4 @@
-from Default_password_check.modules import *
+from modules import *
 import os
 import time
 
