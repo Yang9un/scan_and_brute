@@ -1,7 +1,5 @@
+import requests
 import random
-import urllib
-import urllib2
-
 
 def check(ip,user,password):
 #randstrt create
@@ -19,17 +17,16 @@ def check(ip,user,password):
     password = " ".join(password)
 
     values = { 'textuser': user,'textpass': password, 'Submit' : 'Login', 'randstr' : randstr }
-#values = { 'textuser': textuser,'textpass': textpass, 'Submit' : 'Login' }
-    data = urllib.urlencode(values)
 
     try:
-        req = urllib2.Request(url, data)
-        response = urllib2.urlopen(req)
-        result = response.read()
-
-    except urllib2.HTTPError, e:
-        error =  ip + ' - We failed whit error code - %s.' % e.code
-        return error
+        result = requests.post(url, data=values)
+	print result
+        result.encoding = 'UTF-8'
+        result = result.text
+#	print result
+    except requests.exceptions.HTTPError as e:
+        error =  ip + ' - We failed whit error code - %s.' + str(e)
+        result = ip + "other" + error
 
 #dicision
     if "<title>Please Input name" in result:

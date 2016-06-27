@@ -5,7 +5,6 @@ import sys
 
 
 dir = list(sys.argv)
-#print dir[1]
 
 
 #file open and list create
@@ -18,15 +17,6 @@ def file_open():
 
     pre = [pres.replace("\n","") for pres in pre]
 
-#    print pre_11
-#    print pre_12
-#    print pre_21
-#    print pre_22
-#    p = [password.replace("\n","") for password in p]
-#    len_ip = len(ip)
-#    len_u = len(u)
-#    len_p = len(p)
-
 
 def brute(attack_list):
 #    print attack_list
@@ -37,7 +27,7 @@ def brute(attack_list):
         bt_oj = i.split(';')
 #        print str(bt_oj)
 #        print i
-        check_result.append(bander_checker.bander_check(bt_oj[0],bt_oj[1],[bt_oj[2]]))
+        check_result.append(bander_checker.bander_check_requests(bt_oj[0],bt_oj[1],[bt_oj[2]]))
 #        if "Login OK" in check_result:
 #            print check_result
     return check_result

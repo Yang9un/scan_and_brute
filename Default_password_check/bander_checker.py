@@ -2,23 +2,18 @@ from modules import *
 import urllib
 import urllib2
 import httplib
+import requests
 
-def bander_check(ip, user, password):
+def bander_check_requests(ip, user, password):
     url = str("http://" + ip)
-    values = {}
     try:
-        req = urllib2.Request(url)
-        response = urllib2.urlopen(req)
-        result = response.read()
-
-    except urllib2.HTTPError, e:
-        error =  ip + ' - We failed whit error code - %s.' % e.code
+        result = requests.get(url)
+        result.encoding = 'UTF-8'
+	result = result.text
+    except requests.exceptions.HTTPError as e:
+        error =  ip + ' - We failed whit error code - %s.' + str(e)
         result = ip + "other" + error
-    except (IOError, httplib.HTTPException, urllib2.HTTPError ):
-        result = ip + " - connection fail"
 #    print result
-
-
 #bander check
     if "GS110TP" in result:
         bander = "Netgear GS110TP"
@@ -45,5 +40,4 @@ def bander_check(ip, user, password):
         brute_result = ip + " - No Match Banders & Check to basic Auth" + " - " + bander
 
     print brute_result
-
     return brute_result
