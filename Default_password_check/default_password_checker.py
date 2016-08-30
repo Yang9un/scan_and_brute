@@ -73,15 +73,20 @@ def file_open():
 #countdown
 def countdown(t):
 #    print('This window will remain open for 3 more seconds...')
-    while t >= 0:
-        print "Scanning.....Please Wait "+ str(t) + " Sec"
+    while t <= 300:
+        print "Scanning.....Please Wait(Max 300 Sec) Now : "+ str(t) + " Sec"
         print "\n"
         print "Check List : "
         os.system("cat ./tmp/result.txt")
+	ps_count = os.popen("ps -ef | grep multiple_checker | wc -l").readlines()
+	ps_count = ''.join(ps_count)
+	print "PS_count : " + ps_count
+	if ps_count == "2\n":
+		break
+	time.sleep(1)
         os.system("clear")
-        time.sleep(1)
 
-        t -= 1
+        t = t + 1
 
 
 
@@ -98,9 +103,10 @@ def main():
     os.system("clear")
     print "Scanning...\n"
 #    print "Please Wait 30 sec"
-    countdown(30)
+    countdown(1)
     print "---------------------------------------------"
-    os.system("cat ./tmp/pre | grep OK")
+    os.system("cat ./tmp/pre| awk '!x[$0]++' | grep OK | sort -u")
+    print "---------------------------------------------"
 
 
 
