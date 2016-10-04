@@ -83,7 +83,7 @@ def countdown(t):
 	ps_count = int(ps_count[:1])-2
 	print "Process_count : "
 	print ps_count
-	if ps_count == "0":
+	if ps_count == 0:
 		break
 	time.sleep(1)
         os.system("clear")
